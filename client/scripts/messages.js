@@ -2,7 +2,17 @@ var Messages = {
   format: function (arr) {
 
     for (var i = 0; i < arr.length; i++) {
-      MessagesView.renderMessage(arr[i]);
+
+      arr[i].roomname = arr[i].roomname || 'lobby';
+      if (Rooms[arr[i].roomname] === undefined) {
+        Rooms[arr[i].roomname] = 1;
+        RoomsView.addRoom(arr[i].roomname);
+      }
+      if (arr[i].roomname === RoomsView.currentRoom) {
+
+        MessagesView.renderMessage(arr[i]);
+      }
+
       // if (!arr[i].username) {
       //   arr[i].username = 'anonymous';
       // }

@@ -14,7 +14,6 @@ var MessagesView = {
     // if (!arr[i].roomname) {
     //   arr[i].roomname = 'main';
     // }
-    message.roomname = message.roomname || 'main';
 
     if (message.text) {
       var htmlText = MessageView.render(message);

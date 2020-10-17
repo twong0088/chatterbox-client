@@ -9,11 +9,12 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
+    console.log('handlesubmit');
     var newMessage = {
       username: App.username,
       text: FormView.$form.find('input[type=text]').val(),
-      createdAt: '2020-10-17T04:28:03.102Z'//create newdate
-      //roomname:
+      createdAt: new Date(),
+      roomname: $('select option:selected').text()
     };
     Parse.create(newMessage, function() {
 
@@ -21,7 +22,7 @@ var FormView = {
       // if (!arr[i].roomname) {
       //   arr[i].roomname = 'main';
       // }
-      newMessage.roomname = newMessage.roomname || 'main';
+      newMessage.roomname = newMessage.roomname || 'lobby';
 
       if (newMessage.text) {
         var message = MessageView.render(newMessage);
