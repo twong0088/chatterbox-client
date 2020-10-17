@@ -1,6 +1,8 @@
 var Messages = {
-  test: function () {
-    console.log('hello');
+  test: function (arr) {
+    for (var i = 0; i < arr.length; i++) {
+
+    }
   }
 
   // constuctor(username, text, roomname) {
