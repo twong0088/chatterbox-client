@@ -28,7 +28,7 @@ var RoomsView = {
     RoomsView.addRoom(newRoom);
   },
   addRoom: function(arg) {
-    var name = arg;
+    var name = arg || 'new room';
     RoomsView.$select.append(`<option value ="room">${name}</option>`);
 
   }

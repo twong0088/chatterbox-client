@@ -7,10 +7,13 @@ var MessagesView = {
       var message = item;
       return message;
     });
+    //$('#username').on('click', Friends.add);
   },
 
   renderMessage: function(message) {
     message.username = message.username || 'anonymous';
+    message.username = message.username.replace(/<[^>]+>/g, '');
+
     // if (!arr[i].roomname) {
     //   arr[i].roomname = 'main';
     // }

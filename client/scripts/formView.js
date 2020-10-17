@@ -19,10 +19,14 @@ var FormView = {
     Parse.create(newMessage, function() {
 
       newMessage.username = newMessage.username || 'anonymous';
+      newMessage.username = newMessage.username.replace(/<[^>]+>/g, '');
+
       // if (!arr[i].roomname) {
       //   arr[i].roomname = 'main';
       // }
       newMessage.roomname = newMessage.roomname || 'lobby';
+      newMessage.roomname = newMessage.roomname.replace(/<[^>]+>/g, '');
+
 
       if (newMessage.text) {
         var message = MessageView.render(newMessage);
