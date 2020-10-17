@@ -9,8 +9,27 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    
-    console.log('click!');
+    var newMessage = {
+      username: App.username,
+      text: FormView.$form.find('input[type=text]').val(),
+      createdAt: '2020-10-17T04:28:03.102Z'//create newdate
+      //roomname:
+    };
+    Parse.create(newMessage, function() {
+
+      newMessage.username = newMessage.username || 'anonymous';
+      // if (!arr[i].roomname) {
+      //   arr[i].roomname = 'main';
+      // }
+      newMessage.roomname = newMessage.roomname || 'main';
+
+      if (newMessage.text) {
+        var message = MessageView.render(newMessage);
+        MessagesView.$chats.prepend(message);
+      }
+    });
+
+
   },
 
   setStatus: function(active) {

@@ -10,18 +10,16 @@ var MessagesView = {
   },
 
   renderMessage: function(message) {
-    var allMessages = [];
-    Parse.readAll(function(item) {
-      console.log(item);
-    });
+    message.username = message.username || 'anonymous';
+    // if (!arr[i].roomname) {
+    //   arr[i].roomname = 'main';
+    // }
+    message.roomname = message.roomname || 'main';
 
-
-    var html = '';
-    for (var i = 0; i < allMessages.length; i++) {
-      html += messageView.template(allMessges[i]);
+    if (message.text) {
+      var htmlText = MessageView.render(message);
+      MessagesView.$chats.append(htmlText);
     }
-    $('#chats').append(html);
-
 
 
   },
